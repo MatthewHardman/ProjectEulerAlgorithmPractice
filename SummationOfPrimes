@@ -1,0 +1,31 @@
+
+# Online Python - IDE, Editor, Compiler, Interpreter
+
+#The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+#Find the sum of all the primes below two million.
+
+
+#Use Sieve of Eratosthenes to determine if number is prime. Return array of all prime numbers up to num. 
+def isPrime(num):
+    prime = [True for i in range(num+1)]
+#start by defining all numbers as true
+    p = 2
+    while(p*p <= num):
+        if prime[p] == True:
+            for i in range(p*p, num+1, p):
+                prime[i] = False
+        p += 1
+#Start with the first prime number (2) and then define all multiples of 2 as false (i.e. notPrime). Repeat for all numbers up to num. 
+    primeArr = []
+    for p in range(2, num+1):
+        if prime[p]:
+            primeArr.append(p)
+    return primeArr
+    
+def sumList(lis):
+    sum = 0
+    for i in lis:
+        sum += i
+    return sum
+
+print(sumList(isPrime(2000000)))
